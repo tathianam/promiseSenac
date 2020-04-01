@@ -48,6 +48,7 @@ export class HomePage {
       //3ªopcao (somar)
       let jurosPromise = this.calcularJuros(valor);
       console.log(jurosPromise);
+
       let multaPromise = this.calcularMulta(valor);
       console.log(multaPromise);
 
@@ -91,7 +92,9 @@ export class HomePage {
         let result: number = 0;
         let multa: number = 50;
 
-        result = valorBase + multa;
+        //estava dobrando o valor original
+        //result = valorBase + multa;
+        result = multa;
         resolve(result);
       } else {
         reject('O valor não pode ser zero.');
