@@ -9,9 +9,20 @@ export class HomePage {
   resultado: number = 0;
   constructor() { }
 
-  calcular(){
-    let valor: number = 100;
+  async calcular(){
+    const valor: number = 100;
     let valorCorrigido: number = 0;
+
+    try {
+      valorCorrigido = await this.calcularJuros(valor);
+    valorCorrigido = await this.calcularMulta(valorCorrigido);
+    console.log(valorCorrigido);
+    } catch (error) {
+      console.error(error);
+    }
+    this.resultado = valorCorrigido;
+
+    
 
     // esse código não volta nenhum resultado
       //this.calcularJuros(valor);
@@ -46,23 +57,23 @@ export class HomePage {
       // });
 
       //3ªopcao (somar)
-      let jurosPromise = this.calcularJuros(valor);
-      console.log(jurosPromise);
+      //let jurosPromise = this.calcularJuros(valor);
+      //console.log(jurosPromise);
 
-      let multaPromise = this.calcularMulta(valor);
-      console.log(multaPromise);
+      //let multaPromise = this.calcularMulta(valor);
+      //console.log(multaPromise);
 
       // 4ª opcao async await
       // async calcular()
 
       // const juros = await this.calcularJuros(valor);
 
-      Promise.all([jurosPromise, multaPromise])
-        .then(( result:number[]) => {
-          valorCorrigido = result[0]+ result[1];
-          this.resultado = valorCorrigido;
-          console.log(this.resultado)
-        })
+      //Promise.all([jurosPromise, multaPromise])
+        //.then(( result:number[]) => {
+          //valorCorrigido = result[0]+ result[1];
+          //this.resultado = valorCorrigido;
+          //console.log(this.resultado)
+        //})
 
   }
 
@@ -93,8 +104,8 @@ export class HomePage {
         let multa: number = 50;
 
         //estava dobrando o valor original
-        //result = valorBase + multa;
-        result = multa;
+        //usando async e await precisei voltar o codigo anterior
+        result = valorBase + multa;
         resolve(result);
       } else {
         reject('O valor não pode ser zero.');
