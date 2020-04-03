@@ -15,8 +15,8 @@ export class HomePage {
 
     try {
       valorCorrigido = await this.calcularJuros(valor);
-    valorCorrigido = await this.calcularMulta(valorCorrigido);
-    console.log(valorCorrigido);
+      valorCorrigido = await this.calcularMulta(valorCorrigido);
+      console.log(valorCorrigido);
     } catch (error) {
       console.error(error);
     }
